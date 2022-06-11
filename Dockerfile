@@ -5,6 +5,7 @@ RUN apk add curl nginx gettext
 
 RUN mkdir -p /run/nginx
 COPY build/nginx_ssl.conf /etc/nginx/ssl.conf.tmpl
+COPY build/nginx_default_server.conf /etc/nginx/default_server.conf.tmpl
 COPY build/nginx.conf /etc/nginx/nginx.conf
 COPY build/init.sh /etc/entrypoint.sh
 COPY build/renew.sh /renew.sh
