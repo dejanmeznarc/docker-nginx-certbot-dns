@@ -11,11 +11,12 @@ echo ${CDATE} trying to renew *.${DOMAIN}
 echo "dns_cloudflare_api_token = ${CLOUDFLARE_API_KEY}" > /cf.key.ini
 
 certbot certonly \
-  --dns-cloudflare --agree-tos -n \
+  --dns-cloudflare --agree-tos -n --expand \
   --email "${CERTBOT_EMAIL}" \
   --dns-cloudflare-credentials /cf.key.ini \
   --dns-cloudflare-propagation-seconds "${WAIT_SECONDS:-10}" \
   -d "*.${DOMAIN}" \
+  -d "${DOMAIN}" \
   --deploy-hook "nginx -t && nginx -s reload"
 
 #nginx -t && nginx -s reload
