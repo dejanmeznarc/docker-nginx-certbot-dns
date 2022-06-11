@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  certbot_mashina:
+    hostname: "certbot"
+    container_name: "certbot"
+
+    volumes:
+      - ./certs:/etc/letsencrypt/live:z
+      - ./logs:/var/log/dejan:z
+
+    build:
+      dockerfile: ./Dockerfile
+      context: ./
+
+    env_file:
+      - cloudflare.env
+#    environment:
+#      - CERTBOT_EMAIL=
+#      - CLOUDFLARE_API_KEY=
+#      - WAIT_SECONDS=
+#      - DOMAIN=
+
+
+
+
