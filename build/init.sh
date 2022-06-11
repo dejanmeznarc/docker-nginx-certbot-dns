@@ -6,6 +6,8 @@ envsubst < /etc/nginx/ssl.conf.tmpl > /etc/nginx/ssl.conf
 echo "creating/renewing cers for the first time"
 sh /renew.sh
 
+cp /etc/nginx/ssl_server.conf /etc/nginx/conf.d/example.ignore
+
 echo "starting cron deamon:"
 /usr/sbin/crond -b
 
