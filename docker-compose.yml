@@ -1,12 +1,13 @@
 version: "3"
 
 services:
-  certbot_mashina:
-    hostname: "certbot"
-    container_name: "certbot"
+  aa_proxy:
+    hostname: "AA_PROXY"
+    container_name: "AA_PROXY"
 
     volumes:
-      - ./certs:/etc/letsencrypt/live:z
+      - ./certs:/etc/letsencrypt:z
+      - ./sites:/etc/nginx/conf.d:z
       - ./logs:/var/log/dejan:z
 
     build:

@@ -15,6 +15,7 @@ certbot certonly \
   --email "${CERTBOT_EMAIL}" \
   --dns-cloudflare-credentials /cf.key.ini \
   --dns-cloudflare-propagation-seconds "${WAIT_SECONDS:-10}" \
-  -d "${DOMAIN}"
+  -d "${DOMAIN}" \
+  --deploy-hook "nginx -t && nginx -s reload"
 
 #nginx -t && nginx -s reload
